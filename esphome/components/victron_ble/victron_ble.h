@@ -32,6 +32,7 @@ enum class VICTRON_BLE_RECORD_TYPE : uint8_t {
 /// Victron device / charger operating states.
 enum class VE_REG_DEVICE_STATE : uint8_t {
   OFF = 0x00,
+  LOW_POWER = 0x01,
   FAULT = 0x02,
   BULK = 0x03,
   ABSORPTION = 0x04,
@@ -39,6 +40,14 @@ enum class VE_REG_DEVICE_STATE : uint8_t {
   STORAGE = 0x06,
   EQUALIZE_MANUAL = 0x07,
   EXTERNAL_CONTROL = 0x0B,
+  STARTING_UP = 0xF5,
+  REPEATED_ABSORPTION = 0xF6,
+  AUTO_EQUALIZE = 0xF7,
+  BATTERY_SAFE = 0xF8,
+  LOAD_DETECT = 0xF9,
+  BLOCKED = 0xFA,
+  TEST = 0xFB,
+  EXTERNAL_CONTROL_2 = 0xFC,
   UNAVAILABLE = 0xFF,
 };
 
@@ -113,5 +122,9 @@ class VictronBle : public Component, public esp32_ble_tracker::ESPBTDeviceListen
 
 }  // namespace victron_ble
 }  // namespace esphome
+
+// Include the Solar Charger subclass so that it is always available when
+// the victron_ble component header is included.
+#include "victron_ble_solar_charger.h"
 
 #endif  // USE_ESP32
