@@ -1,5 +1,25 @@
 esp32_ble_tracker:
 
-victron_ble:
-  mac_address: "A4:C1:38:AA:BB:CC"
-  bindkey: "0102030405060708090a0b0c0d0e0f10"
+sensor:
+  - platform: victron_ble
+    id: victron_solar_charger
+    mac_address: "A4:C1:38:AA:BB:CC"
+    bindkey: "0102030405060708090a0b0c0d0e0f10"
+    battery_voltage:
+      name: "SmartSolar Battery Voltage"
+    battery_charging_current:
+      name: "SmartSolar Charging Current"
+    yield_today:
+      name: "SmartSolar Yield Today"
+    solar_power:
+      name: "SmartSolar Solar Power"
+    external_device_load:
+      name: "SmartSolar Load Current"
+
+text_sensor:
+  - platform: victron_ble
+    victron_ble_id: victron_solar_charger
+    charge_state:
+      name: "SmartSolar Charge State"
+    charger_error:
+      name: "SmartSolar Charger Error"

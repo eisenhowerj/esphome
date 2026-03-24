@@ -10,6 +10,9 @@ victron_ble_ns = cg.esphome_ns.namespace("victron_ble")
 VictronBle = victron_ble_ns.class_(
     "VictronBle", cg.Component, esp32_ble_tracker.ESPBTDeviceListener
 )
+VictronBleSolarCharger = victron_ble_ns.class_("VictronBleSolarCharger", VictronBle)
+
+CONF_VICTRON_BLE_ID = "victron_ble_id"
 
 CONFIG_SCHEMA = (
     cv.Schema(
