@@ -5,12 +5,9 @@
 
 #ifdef USE_ESP32
 
-#include <vector>
-
 namespace esphome {
 namespace victron_ble {
 
-static constexpr uint16_t VICTRON_MANUFACTURER_ID = 0x02E1;
 static constexpr uint8_t VICTRON_MANUFACTURER_RECORD_TYPE = 0x10;
 
 /// Known Victron BLE device record types.

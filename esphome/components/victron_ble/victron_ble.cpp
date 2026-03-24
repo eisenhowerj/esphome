@@ -60,8 +60,8 @@ bool VictronBle::parse_device(const esp32_ble_tracker::ESPBTDevice &device) {
     // advertisement.  This lets us reject packets not meant for our device before doing
     // full decryption.
     if (header->encryption_key_byte != this->bindkey_[0]) {
-      ESP_LOGW(TAG, "parse_device(): encryption key byte mismatch (expected 0x%02X, got 0x%02X).",
-               this->bindkey_[0], header->encryption_key_byte);
+      ESP_LOGV(TAG, "parse_device(): encryption key byte mismatch (got 0x%02X).",
+               header->encryption_key_byte);
       continue;
     }
 
